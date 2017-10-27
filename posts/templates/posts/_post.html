@@ -1,0 +1,37 @@
+<div class="shadebox post-media">
+
+    <div class="post-header">
+      <div class="post-user">
+        <a href="{% url 'posts:for_user' username=post.user.username %}">
+          @{{post.user.username}}
+        </a>
+      </div>
+    </div>
+
+    <div class='post-content'>
+      {{post.message_html|safe}}
+    </div>
+
+    <hr style='padding:0; margin:0; margin-top:3px'>
+
+    <div class="post-footer">
+
+      {% if post.community %}
+			   <span class="post-community">in <a href="{% url 'communities:single' slug=post.community.slug %}">{{ post.community.name }}</a></span>
+         <span class='post-community'> on </span>
+      {% endif %}
+      <time class="post-time">
+        <a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">
+          ({{post.create_date}})
+        </a>
+      </time>
+
+      {% if user.is_authenticated and post.user == user %}
+        <a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-simple">
+          <span class="glyphicon glyphicon-remove text-danger" aria-hidden='true'></span>
+          <span class="text-danger icon-label">Delete</span>
+        </a>
+      {% endif %}
+    </div>
+
+</div>

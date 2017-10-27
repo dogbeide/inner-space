@@ -1,0 +1,69 @@
+{% extends "communities/communities_base.html" %}
+
+{% block community_prefix %}
+<div class="row">
+<div class="col-md-4">
+  <div class="content">
+
+    {% if user.is_authenticated %}
+      <h2>Welcome Back,
+        <a href="{% url 'posts:for_user' username=user.username %}">
+          @{{user.username}}!
+        </a>
+      </h2>
+    {% endif %}
+
+    <p>Communities List</p>
+    <hr>
+  </div>
+
+  {% if user.is_authenticated %}
+    <div class="btn-good" id='btn-new-community'>
+      <a href="{% url 'communities:create' %}">
+        New Community
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}
+
+
+{% block community_content %}
+<div class="col-md-8">
+  <div class="list-group shadebox">
+
+    {% for community in community_list  %}
+      <a href="{% url 'communities:single' slug=community.slug %}">
+
+        <a href="{% url 'communities:single' slug=community.slug %}">
+          <h3 class="title list-community-item-heading">{{community.name}}</h3>
+        </a>
+
+        <div class="container-fluid list-community-item-text">
+          {{community.description_html|safe}}
+          <div class="row">
+
+            <div class="col-md-4">
+              <span class="badge">{{community.members.count}}</span>
+              member{{community.members.count|pluralize}}
+            </div>
+
+            <div class="col-md-4">
+              <span class="badge">{{community.posts.count}}</span>
+              post{{community.posts.count|pluralize}}
+            </div>
+
+          </div>
+        </div>
+
+        <hr>
+      </a>
+    {% endfor %}
+
+  </div>
+
+</div>
+
+
+{% endblock %}

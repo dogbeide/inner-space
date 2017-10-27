@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="shadebox" style='padding: 12px'>
+  <h1>Thanks for visiting Inner Space, come back soon!</h1>
+  <h3>Returning to Home in 5 seconds...</h3>
+  <a href="{% url 'home' %}">(Click here if not redirected)</h2>
+</div>
+<script>
+  window.setTimeout(function(){
+    window.location.href = "{% url 'home' %}";
+  }, 5000);
+</script>
+
+{% endblock %}

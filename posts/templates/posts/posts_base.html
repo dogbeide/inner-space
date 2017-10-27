@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="posts-page">
+  <div class="container">
+    <div class="row">
+      {% block post_prefix %}{% endblock %}
+      {% block post_content %}{% endblock %}
+      {% block post_suffix %}{% endblock %}
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

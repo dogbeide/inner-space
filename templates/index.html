@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Welcome to Inner Space!</h1>
+  {% if not user.is_authenticated %}
+
+  {% endif %}
+  <div class="jumbotron jumbotron-home">
+    <div class='jumbo-text-1'>
+      "Outer space may be everything, but<br>
+      Inner Space is much more..."
+    </div>
+
+    <div class="jumbo-text-2">BE ANONYMOUS  -  SAY ANYTHING  -  DO WHATEVER...</div>
+
+    {% if not user.is_authenticated %}
+    <div class="btn-good">
+      <a href="{% url 'accounts:signup' %}">
+        JOIN US
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+  <h4 style='font-style:italic; font-weight:bold; color:rgba(0,0,0,0.7)'>
+    (P.S. New features coming soon, stay tuned!)
+  </h3>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "communities/communities_base.html" %}
+
+{% block community_prefix %}
+
+<div class="col-md-4">
+
+
+<h1>{{community.name}}</h1>
+<div class="jumbotron jumbotron-home" id='community-info'>
+  {{community.description_html|safe}}
+</div>
+<h4>Members: {{community.members.count}}</h4>
+
+  {% if user in community.members.all %}
+    <div class="btn-good" id='btn-leave'>
+      <a href="{% url 'communities:leave' slug=community.slug %}">
+        Leave
+      </a>
+    </div>
+    <div class="btn-good" id='btn-new-post'>
+      <a href="{% url 'posts:create' %}">
+        New Post
+      </a>
+    </div>
+  {% else %}
+
+    {% if user.is_authenticated %}
+    <div class="btn-good" id='btn-join'>
+      <a href="{% url 'communities:join' slug=community.slug %}">
+        Join
+      </a>
+    </div>
+    {% else %}
+    <a href="{% url 'accounts:login' %}"
+       class="btn btn-simple btn-default">
+        Login
+    </a>
+    to post
+    {% endif %}
+
+  {% endif %}
+</div>
+{% endblock %}
+
+<hr>
+
+{% block community_content %}
+
+{# <div class="row">#}
+
+
+<div class="col-md-8" style='margin-top: 15px'>
+  {% if community.posts.count == 0 %}
+    <hr>
+    <h2>Nothing posted in this community yet!</h2>
+  {% else %}
+
+    {% for post in community.posts.all  %}
+    <div>
+      {# 'extends' a.k.a injects this html#}
+      {% include "posts/_post.html" %}
+    </div>
+    {% endfor %}
+
+  {% endif %}
+</div>
+{# </div>#}
+{% endblock %}
