@@ -43,7 +43,7 @@ body {
 }
 
 
-.jumbotron-home{
+.jumbotron-sky{
   background-color: rgba(91,192,222,0.1);
   margin-top: 25px;
 
@@ -52,7 +52,7 @@ body {
 
   -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
 }
-.jumbotron-home:hover {
+.jumbotron-sky:hover {
   box-shadow:0 3px 30px #5bc0de;
   -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
 }
@@ -64,7 +64,6 @@ body {
   font-style:italic;
 }
 .jumbo-text-2 {
-  white-space:pre;
   margin-top: 30px;
   font-size: 1.8em;
   color: rgba(0,0,0,0.9);

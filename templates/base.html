@@ -42,8 +42,8 @@
             {% if user.is_authenticated %}
               <li class='navitem'><a href="{% url 'posts:create' %}">Post</a></li>
               <li class='navitem'><a href="{% url 'communities:all' %}">Communities</a></li>
-              <li class='navitem'><a href="{% url 'accounts:logout' %}">Log Out</a></li>
-              <li class='navitem-user'><a href="{% url 'posts:for_user' username=user.username %}">@{{user.username}}</a></li>
+              <li class='navitem'><a href="{% url 'accounts:logout' %}">Logout</a></li>
+              <li class='navitem-user'><a href="{% url 'accounts:dashboard' username=user.username %}">@{{user.username}}</a></li>
             {% else %}
               <li class='navitem'><a href="{% url 'communities:all' %}">Communities</a></li>
               <li class='navitem'><a href="{% url 'accounts:login' %}">Login</a></li>
@@ -56,16 +56,16 @@
       </div>
     </nav>
 
-    <div class="container mycontent">
-
-      {% block content %}
-
-      {% endblock %}
+    <div class="container">
+      {% block prefix %}{% endblock %}
+      {% block content %}{% endblock %}
+      {% block suffix %}{% endblock %}
+      {% block footer %}{% endblock %}
 
     </div>
+    <script type="text/javascript" src="{% static 'innerspace/js/master.js' %}">
 
+    </script>
   </body>
-  <script type="text/javascript" src="{% static 'innerspace/js/master.js' %}">
 
-  </script>
 </html>

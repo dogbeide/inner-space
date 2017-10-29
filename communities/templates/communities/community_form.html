@@ -7,7 +7,7 @@
 <form action="{% url 'communities:create' %}" method="POST" id='community-form'>
   {% csrf_token %}
   {% bootstrap_form form %}
-  <input type="submit" class="btn btn-large btn-success" value="Create">
+  <span class='btn-sky'><input type="submit" value="Create"></span>
 
 </form>
 

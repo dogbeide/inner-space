@@ -44,7 +44,8 @@ class PostDetail(generic.DetailView,SelectRelatedMixin):
 
 class CreatePost(generic.CreateView,LoginRequiredMixin,SelectRelatedMixin):
 
-    fields = ('message','community')
+    # fields = ('message','community')
+    fields = ('message')
     model = models.Post
 
     def form_valid(self,form):
