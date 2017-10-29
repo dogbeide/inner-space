@@ -15,6 +15,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'innerspace/css/master.css' %}">
+    <link rel="stylesheet" href="{% static 'innerspace/css/btn.css' %}">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -41,7 +42,6 @@
             {% if user.is_authenticated %}
               <li class='navitem'><a href="{% url 'posts:create' %}">Post</a></li>
               <li class='navitem'><a href="{% url 'communities:all' %}">Communities</a></li>
-              <li class='navitem'><a href="{% url 'communities:create' %}">Start Community</a></li>
               <li class='navitem'><a href="{% url 'accounts:logout' %}">Log Out</a></li>
               <li class='navitem-user'><a href="{% url 'posts:for_user' username=user.username %}">@{{user.username}}</a></li>
             {% else %}

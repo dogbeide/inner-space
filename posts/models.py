@@ -33,8 +33,4 @@ class Post(models.Model):
         ordering = ['-create_date']
         unique_together = ('user','message')
 
-
-
-
-
 #

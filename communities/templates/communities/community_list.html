@@ -23,6 +23,12 @@
         New Community
       </a>
     </div>
+  {% else %}
+  <a href="{% url 'accounts:login' %}"
+     class="btn btn-simple btn-default">
+      Login
+  </a>
+  to start communities
   {% endif %}
 
 </div>
@@ -31,17 +37,19 @@
 
 {% block community_content %}
 <div class="col-md-8">
-  <div class="list-group shadebox">
 
     {% for community in community_list  %}
-      <a href="{% url 'communities:single' slug=community.slug %}">
+      <div class="shadebox community-item">
 
-        <a href="{% url 'communities:single' slug=community.slug %}">
-          <h3 class="title list-community-item-heading">{{community.name}}</h3>
-        </a>
+          <a href="{% url 'communities:single' slug=community.slug %}">
+            <h3 class="title list-community-item-name">
+              {{community.name}}
+            </h3>
+          </a>
 
         <div class="container-fluid list-community-item-text">
           {{community.description_html|safe}}
+
           <div class="row">
 
             <div class="col-md-4">
@@ -50,18 +58,21 @@
             </div>
 
             <div class="col-md-4">
-              <span class="badge">{{community.posts.count}}</span>
-              post{{community.posts.count|pluralize}}
+              <a href="{% url 'communities:single' slug=community.slug %}">
+                <span class="badge">{{community.posts.count}}</span>
+                post{{community.posts.count|pluralize}}
+              </a>
             </div>
 
           </div>
+
+
         </div>
 
         <hr>
-      </a>
-    {% endfor %}
 
-  </div>
+      </div>
+    {% endfor %}
 
 </div>
 
