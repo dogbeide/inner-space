@@ -14,12 +14,12 @@ urlpatterns = [
     url(r'(?P<slug>[-\w]+)/$',
         views.SingleCommunity.as_view(),
         name='single'),
-    url(r'join/(?P<slug>[-\w]+)/$',
-        views.JoinCommunity.as_view(),
-        name='join'),
-    url(r'leave/(?P<slug>[-\w]+)/$',
-        views.LeaveCommunity.as_view(),
-        name='leave'),
+    # url(r'join/(?P<slug>[-\w]+)/$',
+    #     views.JoinCommunity.as_view(),
+    #     name='join'),
+    # url(r'leave/(?P<slug>[-\w]+)/$',
+    #     views.LeaveCommunity.as_view(),
+    #     name='leave'),
 ]
 
 

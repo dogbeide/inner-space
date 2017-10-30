@@ -2,13 +2,13 @@
 {% block content %}
 <div class="shadebox" style='padding: 12px'>
   <h1>Successfully logged in!</h1>
-  <h3>Returning to Home in 3 seconds...</h3>
-  <a href="{% url 'home' %}">(Click here if not redirected)</h2>
+  <h3>Redirecting to dashboard in 3 seconds...</h3>
+  <a href="{% url 'accounts:dashboard' slug=user.slug %}">(Click here if not redirected)</h2>
 </div>
 
 <script>
   window.setTimeout(function(){
-    window.location.href = "{% url 'home' %}";
+    window.location.href = "{% url 'accounts:dashboard' slug=user.slug %}";
   }, 3000);
 </script>
 {% endblock %}

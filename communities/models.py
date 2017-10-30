@@ -18,7 +18,7 @@ class Community(models.Model):
     slug = models.SlugField(allow_unicode=True,unique=True)
     description = models.TextField(blank=True,default='')
     description_html = models.TextField(editable=False,default='',blank=True)
-    members = models.ManyToManyField(User,through='CommunityMember')
+    # members = models.ManyToManyField(User,through='CommunityMember')
 
     def __str__(self):
         return self.name
@@ -35,15 +35,15 @@ class Community(models.Model):
         ordering = ['name']
 
 
-class CommunityMember(models.Model):
-    community = models.ForeignKey(Community,related_name='Members')
-    user = models.ForeignKey(User,related_name='user_communities')
-
-    def __str__(self):
-        return self.user.username
-
-    class Meta:
-        unique_together = ('community','user')
+# class CommunityMember(models.Model):
+#     community = models.ForeignKey(Community,related_name='Members')
+#     user = models.ForeignKey(User,related_name='user_communities')
+#
+#     def __str__(self):
+#         return self.user.username
+#
+#     class Meta:
+#         unique_together = ('community','user')
 
 
 #

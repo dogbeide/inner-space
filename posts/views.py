@@ -44,9 +44,8 @@ class PostDetail(generic.DetailView,SelectRelatedMixin):
 
 class CreatePost(generic.CreateView,LoginRequiredMixin,SelectRelatedMixin):
 
-    # fields = ('message','community')
-    fields = ('message')
     model = models.Post
+    fields = ['message','community']
 
     def form_valid(self,form):
         self.object = form.save(commit=False)
@@ -54,11 +53,16 @@ class CreatePost(generic.CreateView,LoginRequiredMixin,SelectRelatedMixin):
         self.object.save()
         return super().form_valid(form)
 
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
 class DeletePost(generic.DeleteView,LoginRequiredMixin,SelectRelatedMixin):
 
     model = models.Post
     select_related = ('user','community')
-    success_url = reverse_lazy('posts:all')
+    success_url = reverse_lazy('accounts:dashboard')
 
     def get_queryset(self):
         queryset = super().get_queryset()

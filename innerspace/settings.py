@@ -31,6 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'innerspace.pythonanywhere.com',
     '127.0.0.1',
+    'localhost',
 ]
 
 
@@ -92,6 +93,8 @@ DATABASES = {
     }
 }
 
+
+AUTH_USER_MODEL = 'accounts.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

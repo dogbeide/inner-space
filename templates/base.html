@@ -40,10 +40,10 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-              <li class='navitem'><a href="{% url 'posts:create' %}">Post</a></li>
+              {# <li class='navitem'><a href="{% url 'posts:create' %}">Post</a></li>#}
               <li class='navitem'><a href="{% url 'communities:all' %}">Communities</a></li>
               <li class='navitem'><a href="{% url 'accounts:logout' %}">Logout</a></li>
-              <li class='navitem-user'><a href="{% url 'accounts:dashboard' username=user.username %}">@{{user.username}}</a></li>
+              <li class='navitem-user'><a href="{% url 'accounts:dashboard' slug=user.slug %}">@{{user.username}}</a></li>
             {% else %}
               <li class='navitem'><a href="{% url 'communities:all' %}">Communities</a></li>
               <li class='navitem'><a href="{% url 'accounts:login' %}">Login</a></li>

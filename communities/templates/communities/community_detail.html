@@ -1,51 +1,41 @@
 {% extends "communities/communities_base.html" %}
 
+<div class="row">
 {% block community_prefix %}
 
-<div class="col-md-4">
+
+  <div class="col-md-4">
 
 
-<h1>{{community.name}}</h1>
-<h4>Members: {{community.members.count}}</h4>
-<div class="jumbotron jumbotron-home" id='community-info'>
-  {{community.description_html|safe}}
-</div>
+    <h1>{{community.name}}</h1>
 
 
-<hr>
-
-  {% if user in community.members.all %}
-  <div class="row">
-    <div class="btn-sky" id='btn-leave'>
-      <a href="{% url 'communities:leave' slug=community.slug %}">
-        Leave
-      </a>
+    <div class="jumbotron jumbotron-sky" id='community-info'>
+      {{community.description_html|safe}}
     </div>
-    <div class="btn-sky" id='btn-new-post'>
-      <a href="{% url 'posts:create' %}">
-        New Post
-      </a>
-    </div>
+
+
+      <span class="badge">{{community.posts.count}}</span>
+      post{{community.posts.count|pluralize}}
+
+    <hr>
+
+      {% if user.is_authenticated %}
+        <div class="btn-sky">
+          <a href="{% url 'posts:create' %}">
+            New Post
+          </a>
+        </div>
+        {% else %}
+        <a href="{% url 'accounts:login' %}"
+           class="btn btn-simple btn-default">
+            Login
+        </a>
+        to post
+
+      {% endif %}
+
   </div>
-
-  {% else %}
-
-    {% if user.is_authenticated %}
-    <div class="btn-sky" id='btn-join'>
-      <a href="{% url 'communities:join' slug=community.slug %}">
-        Join
-      </a>
-    </div>
-    {% else %}
-    <a href="{% url 'accounts:login' %}"
-       class="btn btn-simple btn-default">
-        Login
-    </a>
-    to post
-    {% endif %}
-
-  {% endif %}
-</div>
 {% endblock %}
 
 
@@ -57,11 +47,8 @@
 
 <div class="col-md-8" style='margin-top: 15px'>
   {% if community.posts.count == 0 %}
-  <div class="">
-
-  </div>
-  <div class="">
-    <h2>No topics within this community yet!</h2>
+  <div class=''>
+    <h2>No posts within this community yet!</h2>
   </div>
 
   {% else %}
@@ -75,5 +62,5 @@
 
   {% endif %}
 </div>
-{# </div>#}
 {% endblock %}
+</div>
