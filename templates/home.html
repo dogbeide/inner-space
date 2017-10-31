@@ -1,5 +1,54 @@
 {% extends "base.html" %}
+
 {% block content %}
-  <h1>Welcome to Inner Space!</h1>
-  
+  <div class="row">
+
+    <div class="col-md-4">
+
+      {% if user.is_authenticated %}
+        <div class="btn-sky">
+          <a href="{% url 'posts:create' %}">
+            New Post
+          </a>
+        </div>
+      {% else %}
+        <a href="{% url 'accounts:login' %}"
+           class="btn btn-outline-dark btn-sm">
+            Login
+        </a>
+        to post
+      {% endif %}
+
+      <hr>
+
+    </div>
+
+    <div class="col-md-8">
+
+    {% include "posts/_nav.html" %}
+    {# <hr class='no-margin-top'>#}
+
+    {% if newest %}
+
+      {% for post in newest %}
+        {% include "posts/_post.html" %}
+      {% endfor %}
+
+    {% elif popular %}
+
+      {% for post in popular %}
+        {% include "posts/_post.html" %}
+      {% endfor %}
+
+    {% elif myfeed %}
+
+      {% for post in myfeed %}
+        {% include "posts/_post.html" %}
+      {% endfor %}
+
+    {% endif %}
+
+    </div>
+  </div>
+
 {% endblock %}

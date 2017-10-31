@@ -20,7 +20,6 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/',admin.site.urls),
-    url(r'^$',views.HomePage.as_view(),name='home'),
     url(r'^about/$',views.AboutPage.as_view(),name='about'),
     url(r'^accounts/',include('accounts.urls',namespace='accounts')),
     url(r'^accounts/',include('django.contrib.auth.urls')),
@@ -28,6 +27,8 @@ urlpatterns = [
     url(r'^communities/',include('communities.urls',namespace='communities')),
     url(r'^login-success/$',views.LoginSuccessPage.as_view(),name='login_success'),
     url(r'^thanks/$',views.ThanksPage.as_view(),name='thanks'),
+    url(r'^(?P<postnav>[-\w]+)/$',views.home,name='home'),
+    url(r'^$',views.home,name='home'),
 ]
 
 if settings.DEBUG:

@@ -148,3 +148,45 @@ body {
 hr {
   color: blue;
 }
+
+.no-margin-vertical {
+  margin: 0px;
+
+  padding: 0;
+}
+
+.post-nav {
+  margin-bottom: 8px;
+}
+
+.post-nav-item {
+  display: block;
+  font-size: 1.2em;
+  color: var(--jumbo-text-1-color);
+  font-weight: bold;
+  margin-right: 10px;
+}
+.post-nav-item-active {
+  /*color: #5668a5;*/
+  color: #0056b3;
+  background-color: rgba(86,104,165,0.08);
+}
+.post-nav-divider {
+  display: block;
+  font-size: 0.9em;
+  color: #ccc;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.no-underline {
+  text-decoration: none;
+}
+.no-underline:hover {
+  text-decoration: none;
+}
+.no-underline a {
+  text-decoration: none;
+}
+.no-underline a:hover {
+  text-decoration: none;
+}
