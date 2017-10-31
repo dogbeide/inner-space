@@ -6,13 +6,16 @@
     <title>Inner Space</title>
 
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <!-- Bootstrap Javascript-->
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!--Font Awesome CSS -->
 
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css' %}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'innerspace/css/master.css' %}">
     <link rel="stylesheet" href="{% static 'innerspace/css/btn.css' %}">
@@ -23,38 +26,51 @@
   </head>
   <body>
 
-    <nav class='navbar mynav' role="navigation" id='navbar'>
-      <div class="container mycontainer">
-      <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg mynav" id='navBar'>
+        <div class="container">
 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#the-nav" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class='navbar-brand navitem navitem-brand' href="{% url 'home' %}" id='the-nav'> >> INNER SPACE << </a>
-        </div>
 
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
+        <a class='navbar-brand mynav-item mynav-item-brand' href="{% url 'home' %}" id='the-nav'> >> INNER SPACE << </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class='nav-item nav-link mynav-item'><a href="{% url 'home' %}">Home</a></li>
+              <li class='nav-item nav-link mynav-item'><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
-              {# <li class='navitem'><a href="{% url 'posts:create' %}">Post</a></li>#}
-              <li class='navitem'><a href="{% url 'communities:all' %}">Communities</a></li>
-              <li class='navitem'><a href="{% url 'accounts:logout' %}">Logout</a></li>
-              <li class='navitem-user'><a href="{% url 'accounts:dashboard' slug=user.slug %}">@{{user.username}}</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mynav-item" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'accounts:dashboard' slug=user.slug %}">Dashboard</a>
+                  <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
+                </div>
+              </li>
             {% else %}
-              <li class='navitem'><a href="{% url 'communities:all' %}">Communities</a></li>
-              <li class='navitem'><a href="{% url 'accounts:login' %}">Login</a></li>
-              <li class='navitem'><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+              <li class='nav-item nav-link mynav-item'><a href="{% url 'accounts:login' %}">Login</a></li>
+              <li class='nav-item nav-link mynav-item'><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
             {% endif %}
-          </ul>
-        </div>
 
-      </div>
-      </div>
-    </nav>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+              <i class="fa fa-search fa-3" aria-hidden="true"></i>
+            </button>
+          </form>
+
+
+
+        </div>
+      </nav>
+    {# -------------------------------------------#}
+
+
 
     <div class="container">
       {% block prefix %}{% endblock %}

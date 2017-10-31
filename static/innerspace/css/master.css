@@ -25,22 +25,30 @@ body {
 .mynav .navbar-toggle .icon-bar {
     background-color: #5bc0de;
 }
-.navitem {
+
+.mynav-item {
   -webkit-transition:all .3s cubic-bezier(.93, .71, .58, 1);
   border-bottom:1px solid transparent;
 }
-.navitem-brand {
+.mynav-item:hover {
+   border-bottom:1px solid #5bc0de;
+}
+
+.mynav-item a:hover {
+  text-decoration: none;
+}
+
+.mynav-item-brand {
   font-size: 1.2em;
   color: #5bc0de;
 }
-.navitem-user{
+.mynav-item-user{
   margin-left: 50px;
   color: black;
   border: 0;
 }
-.navitem:hover {
-   border-bottom:1px solid #5bc0de;
-}
+
+
 
 
 .jumbotron-sky{
