@@ -1,17 +1,12 @@
-{% extends "posts/posts_base.html" %}
+{% extends "base.html" %}
 {% load bootstrap3 %}
 
-{% block post_content %}
+{% block content %}
 
-<h4>Create a new post:</h4>
-
+<h3 style="font-weight:bold; margin-bottom:18px">Create a new post:</h3>
 <form id='post-form' action="{% url 'posts:create' %}" method="post">
   {% csrf_token %}
-
-  {% for field in form %}
-    {% bootstrap_field field %}
-  {% endfor %}
-
+  {% bootstrap_field form.message %}
   <span class='btn-sky'><input type="submit" value="Post"></span>
 
 </form>

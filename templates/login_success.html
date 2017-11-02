@@ -3,12 +3,12 @@
 <div class="shadebox" style='padding: 12px'>
   <h1>Successfully logged in!</h1>
   <h3>Redirecting to dashboard in 3 seconds...</h3>
-  <a href="{% url 'accounts:dashboard' slug=user.slug %}">(Click here if not redirected)</h2>
+  <a href="{% url 'accounts:user_profile' username=user.slug %}">(Click here if not redirected)</h2>
 </div>
 
 <script>
   window.setTimeout(function(){
-    window.location.href = "{% url 'accounts:dashboard' slug=user.slug %}";
+    window.location.href = "{% url 'accounts:user_profile' username=user.slug %}";
   }, 3000);
 </script>
 {% endblock %}

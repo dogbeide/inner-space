@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+  {% include "posts/_post.html" %}
+
+  <br>
+
+  {# <h3 style="font-weight:bold; margin-bottom:18px">Reply to post:</h3>#}
+  <form id='post-form' action="{% url 'comments:create' pk=post.pk %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_field form.message %}
+    <span class='btn-sky'><input type="submit" value="Reply"></span>
+  </form>
+{% endblock %}

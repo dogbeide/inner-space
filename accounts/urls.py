@@ -46,9 +46,9 @@ urlpatterns = [
     url(r'^reset/done/$',
         PasswordResetCompleteView.as_view(template_name='accounts/password_reset_complete.html'),
         name='password_reset_complete'),
-    url(r'(?P<slug>[-\w]+)/$',
-        views.DashboardView.as_view(),
-        name='dashboard'),
+    url(r'(?P<username>[-\w]+)/$',
+        views.user_profile,
+        name='user_profile'),
 ]
 
 

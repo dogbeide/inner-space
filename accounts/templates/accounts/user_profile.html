@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-4">
+    <h1>@{{username}}</h1>
+    <hr>
+  </div>
+  <div class="col-sm-8">
+    {% for post in user_posts  %}
+      {% include "posts/_post.html" %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

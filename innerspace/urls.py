@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^accounts/',include('accounts.urls',namespace='accounts')),
     url(r'^accounts/',include('django.contrib.auth.urls')),
     url(r'^posts/',include('posts.urls',namespace='posts')),
-    url(r'^communities/',include('communities.urls',namespace='communities')),
+    url(r'^comments/',include('comments.urls',namespace='comments')),
     url(r'^login-success/$',views.LoginSuccessPage.as_view(),name='login_success'),
     url(r'^thanks/$',views.ThanksPage.as_view(),name='thanks'),
     url(r'^(?P<postnav>[-\w]+)/$',views.home,name='home'),

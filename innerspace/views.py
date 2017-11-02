@@ -9,16 +9,16 @@ def home(request, postnav = 'newest'):
         context = {}
 
         if postnav == 'newest':
-            posts = Post.objects.all().order_by('create_date')
+            posts = Post.objects.all().order_by('-create_date')
 
         # TODO: Rank by popularlity
         elif postnav == 'popular':
-            posts = Post.objects.all().order_by('create_date')
+            posts = Post.objects.all().order_by('-create_date')
 
         elif postnav == 'myfeed':
             if request.user.is_authenticated:
                 print(request.user.username)
-                posts = Post.objects.all().filter(user__username__iexact=request.user.username).order_by('create_date')
+                posts = Post.objects.all().filter(user__username__iexact=request.user.username).order_by('-create_date')
             else:
                 return redirect('accounts:login')
 

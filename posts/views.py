@@ -1,8 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
 from django.views import generic
 from django.http import Http404
+from django.shortcuts import render,redirect,get_object_or_404
 from braces.views import SelectRelatedMixin
 
 from . import models
@@ -34,18 +36,14 @@ class UserPosts(generic.ListView):
         context['post_user'] = self.post_user
         return context
 
-class PostDetail(generic.DetailView,SelectRelatedMixin):
+class PostDetail(generic.DetailView):
     model = models.Post
-    select_related = ('user','community')
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.filter(user__username__iexact=self.kwargs.get('username'))
 
 class CreatePost(generic.CreateView,LoginRequiredMixin,SelectRelatedMixin):
 
     model = models.Post
-    fields = ['message','community']
+    fields = ['message']
 
     def form_valid(self,form):
         self.object = form.save(commit=False)
@@ -58,20 +56,31 @@ class CreatePost(generic.CreateView,LoginRequiredMixin,SelectRelatedMixin):
         return context
 
 
-class DeletePost(generic.DeleteView,LoginRequiredMixin,SelectRelatedMixin):
+# class DeletePost(generic.DeleteView,LoginRequiredMixin,SelectRelatedMixin):
+#
+#     model = models.Post
+#     select_related = ('user')
+#     success_url = reverse_lazy('accounts:dashboard')
+#
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+#         return queryset.filter(user_id=self.request.user.id)
+#
+#     def delete(self,*args,**kwargs):
+#         messages.success(self.request,'Post Deleted')
+#         return super().delete(*args,**kwargs)
 
-    model = models.Post
-    select_related = ('user','community')
-    success_url = reverse_lazy('accounts:dashboard')
+@login_required
+def delete_post(request,pk):
+    print('hello')
+    post = get_object_or_404(models.Post,pk=pk)
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.filter(user_id=self.request.user.id)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('home')
 
-    def delete(self,*args,**kwargs):
-        messages.success(self.request,'Post Deleted')
-        return super().delete(*args,**kwargs)
+    else:
 
-
+        return render(request,'posts/post_confirm_delete.html',{'object':post})
 
 #
