@@ -45,6 +45,15 @@
   margin-bottom: 20px;
 }
 
+.rate-plus {
+  font-size: 1.4em;
+  text-decoration: none;
+}
+.rate-minus {
+  font-size: 1.4em;
+  text-decoration: none;
+}
+
 /*#btn-leave {
   float: left;
   margin-bottom: 20px;

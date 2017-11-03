@@ -8,6 +8,9 @@ urlpatterns = [
         views.create_comment,
         name='create'),
     url(r'^delete/(?P<pk>\d+)/$',
-            views.delete_comment,
-            name='delete'),
+        views.delete_comment,
+        name='delete'),
+    url(r'^rate/(?P<pk>\d+)/(?P<rating>[\+\-]+)/$',
+        views.rate,
+        name='rate'),
 ]

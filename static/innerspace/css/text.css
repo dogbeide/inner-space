@@ -1,0 +1,122 @@
+hr {
+  color: blue;
+}
+
+.jumbo-text-1 {
+  display: block;
+  font-size: 2.4em;
+  width: 90%;
+  color: var(--jumbo-text-1-color);
+  font-style:italic;
+}
+.jumbo-text-1-sm {
+  font-size: 1.3em;
+  width: 90%;
+  color: var(--jumbo-text-1-color);
+  font-style:italic;
+}
+.jumbo-text-2 {
+  margin-top: 30px;
+  font-size: 1.8em;
+  color: rgba(0,0,0,0.9);
+  font-style: italic;
+  font-weight: bold;
+}
+.jumbo-text-2-sm {
+  font-size: 1.3em;
+  width: 90%;
+  color: rgba(0,0,0,0.8);
+  font-style:italic;
+}
+
+
+.bold {
+  font-weight: bold;
+}
+
+
+.post-item {
+  padding-bottom: 8px;
+  padding-left: 5px;
+  margin-bottom: 15px;
+}
+.post-header {
+
+}
+.post-user {
+  font-size: 0.8em;
+  margin: 0;
+  margin-bottom: 3px;
+  padding: 0;
+}
+.post-content {
+  margin: 0;
+  padding: 0;
+}
+.post-footer {
+  justify-content: left;
+}
+.post-comments-link {
+  font-size: 0.8em;
+}
+.post-time {
+  white-space: nowrap;
+  font-size: 0.65em;
+}
+.post-score {
+  white-space: nowrap;
+  font-size: 0.75em;
+}
+
+/**/
+
+.comment-item {
+  background-color: rgba(91,192,222,0.1);
+  margin-top: 10px;
+  padding-left: 5px;
+
+  box-shadow:0 4px 10px #ccc;
+  border-radius:10px;
+
+  -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
+
+}
+.comment-item:hover {
+  box-shadow:0 3px 20px #5bc0de;
+  -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
+}
+
+.comment-header {
+
+}
+.comment-user {
+  margin: 0;
+  margin-bottom: 3px;
+  padding: 0;
+  font-size: 0.8em;
+}
+.comment-content {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+  color: var(--jumbo-text-2-color);
+}
+.comment-footer {
+  justify-content: left;
+}
+.comment-time {
+  font-size: 0.65em;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+.no-underline:hover {
+  text-decoration: none;
+}
+.no-underline a {
+  text-decoration: none;
+}
+.no-underline a:hover {
+  text-decoration: none;
+}

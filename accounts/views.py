@@ -18,24 +18,12 @@ class SignUpView(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'accounts/signup.html'
 
-# class DashboardView(generic.DetailView, LoginRequiredMixin):
-#     template_name = 'accounts/dashboard.html'
-#     context_object_name = 'dashboard'
-#     model = User
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context.update({
-#             'test': 'Injected content',
-#             'user_posts': context['object'].posts.all(),
-#         })
-#         return context
-
 def user_profile(request,username):
     posts = Post.objects.all().filter(user__username__iexact=username).order_by('-create_date')
+    profile_user = User.objects.get(username__iexact=username)
     context = {
-        'username':username,
         'user_posts':posts,
+        'profile_user':profile_user
     }
 
     # Our account or another?

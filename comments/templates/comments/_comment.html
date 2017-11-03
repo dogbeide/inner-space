@@ -20,8 +20,22 @@
           ({{comment.create_date}})
       </time>
 
-      <span class="text-success" style='font-size: 1.2em'>+</span>
-      <span class="text-danger" style='font-size: 1.2em'>-</span>
+      {% if not user in comment.raters.all and not user.username == comment.user.username %}
+        <span>&nbsp;</span>
+        <a class="text-success rate-plus" href="{% url 'comments:rate' pk=comment.pk rating='+' %}">+</a>
+        <span>&nbsp;</span>
+        <a class="text-danger rate-minus" href="{% url 'comments:rate' pk=comment.pk rating='-' %}">-</a>
+      {% endif %}
+
+      <span>&nbsp;</span>
+      {% if comment.score > 0 %}
+        <span class="post-score">Score: <span class="text-success">+{{comment.score|floatformat:1}}</span></span>
+      {% elif comment.score < 0 %}
+        <span class="post-score">Score: <span class="text-danger">{{comment.score|floatformat:1}}</span></span>
+      {% else %}
+        <span class="post-score"> Score: <span class="text-secondary"> {{comment.score|floatformat:0}}</span></span>
+      {% endif %}
+
 
       {% if user.is_authenticated and comment.user == user %}
         {% if not hide_delete %}

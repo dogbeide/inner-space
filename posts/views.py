@@ -7,6 +7,7 @@ from django.http import Http404
 from django.shortcuts import render,redirect,get_object_or_404
 from braces.views import SelectRelatedMixin
 
+from innerspace.views import home
 from . import models
 from . import forms
 
@@ -56,20 +57,6 @@ class CreatePost(generic.CreateView,LoginRequiredMixin,SelectRelatedMixin):
         return context
 
 
-# class DeletePost(generic.DeleteView,LoginRequiredMixin,SelectRelatedMixin):
-#
-#     model = models.Post
-#     select_related = ('user')
-#     success_url = reverse_lazy('accounts:dashboard')
-#
-#     def get_queryset(self):
-#         queryset = super().get_queryset()
-#         return queryset.filter(user_id=self.request.user.id)
-#
-#     def delete(self,*args,**kwargs):
-#         messages.success(self.request,'Post Deleted')
-#         return super().delete(*args,**kwargs)
-
 @login_required
 def delete_post(request,pk):
     print('hello')
@@ -83,4 +70,9 @@ def delete_post(request,pk):
 
         return render(request,'posts/post_confirm_delete.html',{'object':post})
 
+@login_required
+def rate(request, pk, rating):
+    post = models.Post.objects.get(pk=pk)
+    request.user.rate(post,rating)
+    return redirect('home')
 #

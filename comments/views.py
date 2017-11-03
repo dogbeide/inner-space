@@ -50,3 +50,10 @@ def delete_comment(request,pk):
 
     else:
         return render(request,'comments/comment_confirm_delete.html',{'comment':comment})
+
+@login_required
+def rate(request, pk, rating):
+    print(rating)
+    comment = Comment.objects.get(pk=pk)
+    request.user.rate(comment,rating)
+    return redirect('home')

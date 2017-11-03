@@ -3,10 +3,23 @@
 {% block prefix %}
 <div class="row">
   <div class="col-sm-4">
-    <h1>@{{user.username}}</h1>
+    <h1 class=jumbo-text-2>@{{user.username}}</h1>
+    <h5>
+      Reputation:
+      <span class="jumbo-text-1-sm bold"> {{user.rep|floatformat:2}} / 10</span>
+      <span class="jumbo-text-1-sm post-comments-link"> (stars)</span>
+    </h5>
+    <h5>
+      Power:
+      <span class="jumbo-text-1-sm bold">{{user.power|floatformat:2}}</span>
+      <span class="jumbo-text-1-sm post-comments-link"> (votes)</span>
+    </h5>
+
+
     <hr>
   </div>
   <div class="col-sm-8">
+    {# TODO, fix and {% include "accounts/_nav.html" %}#}
     {% for post in user_posts  %}
       {% include "posts/_post.html" %}
     {% endfor %}

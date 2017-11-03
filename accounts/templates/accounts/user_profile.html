@@ -3,9 +3,23 @@
 {% block content %}
 <div class="row">
   <div class="col-sm-4">
-    <h1>@{{username}}</h1>
+    <h1 class='jumbo-text-2'>@{{profile_user.username}}</h1>
+
+    <h5>
+      Reputation:
+      <span class="jumbo-text-1-sm bold"> {{profile_user.rep|floatformat:2}} / 10</span>
+      <span class="jumbo-text-1-sm post-comments-link"> (stars)</span>
+    </h5>
+    <h5>
+      Power:
+      <span class="jumbo-text-1-sm bold">{{profile_user.power|floatformat:2}}</span>
+      <span class="jumbo-text-1-sm post-comments-link"> (votes)</span>
+    </h5>
+
     <hr>
+
   </div>
+
   <div class="col-sm-8">
     {% for post in user_posts  %}
       {% include "posts/_post.html" %}

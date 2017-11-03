@@ -16,23 +16,39 @@
 
     <div class="post-footer">
 
-      <time class="post-time">
-        <a href="{% url 'posts:single' pk=post.pk %}">
-          ({{post.create_date}})
-        </a>
-      </time>
 
       <span class="badge">{{post.comments.count}}</span>
-      <a href="{% url 'posts:single' pk=post.pk %}">comment{{post.comments.count|pluralize}}</a>
+      <a class='post-comments-link' href="{% url 'posts:single' pk=post.pk %}">comment{{post.comments.count|pluralize}}</a>
 
-      <span class="text-success" style='font-size: 1.2em'>+</span>
-      <span class="text-danger" style='font-size: 1.2em'>-</span>
+      {% if not user in post.raters.all and not user.username == post.user.username %}
+        <span>&nbsp;</span>
+        <a class="text-success rate-plus" href="{% url 'posts:rate' pk=post.pk rating='+' %}">+</a>
+        <span>&nbsp;</span>
+        <a class="text-danger rate-minus" href="{% url 'posts:rate' pk=post.pk rating='-' %}">-</a>
+      {% endif %}
+
+      <span>&nbsp;</span>
+      {% if post.score > 0 %}
+        <span class="post-score">Score: <span class="text-success">+{{post.score|floatformat:1}}</span></span>
+      {% elif post.score < 0 %}
+        <span class="post-score">Score: <span class="text-danger">{{post.score|floatformat:1}}</span></span>
+      {% else %}
+        <span class="post-score"> Score: <span class="text-secondary"> {{post.score|floatformat:0}}</span></span>
+      {% endif %}
+
 
       {% if user.is_authenticated and post.user == user %}
         <a href="{% url 'posts:delete' pk=post.pk %}" title="deletes" class="btn btn-simple">
           <span class="text-danger icon-label">Delete</span>
         </a>
       {% endif %}
+
+      <time class="post-time">
+        <a href="{% url 'posts:single' pk=post.pk %}">
+          ({{post.create_date}})
+        </a>
+      </time>
+
     </div>
 
 </div>

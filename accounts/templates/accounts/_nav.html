@@ -1,0 +1,52 @@
+
+<div class="container-fluid">
+  <div class="row no-margin-vertical post-nav">
+
+    {% if newest %}
+      <div class="col-xs-4">
+        <a class="post-nav-item no-underline post-nav-item-active" href="{%url 'home' postnav='newest' %}">
+          NEWEST
+        </a>
+      </div>
+    {% else %}
+      <div class="col-xs-4">
+        <a class="post-nav-item no-underline" href="{%url 'home' postnav='newest' %}">
+          NEWEST
+        </a>
+      </div>
+    {% endif %}
+
+    <span class="post-nav-divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+
+    {% if popular %}
+      <div class="col-xs-4">
+        <a class="post-nav-item no-underline post-nav-item-active" href="{%url 'home' postnav='popular' %}">
+          POPULAR
+        </a>
+      </div>
+    {% else %}
+      <div class="col-xs-4">
+        <a class="post-nav-item no-underline" href="{%url 'home' postnav='popular' %}">
+          POPULAR
+        </a>
+      </div>
+    {% endif %}
+
+    <span class="post-nav-divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+
+    {% if myfeed %}
+      <div class="col-xs-4">
+        <a class="post-nav-item no-underline post-nav-item-active" href="{%url 'home' postnav='myfeed' %}">
+          MY FEED
+        </a>
+      </div>
+    {% else %}
+      <div class="col-xs-4">
+        <a class="post-nav-item no-underline" href="{%url 'home' postnav='myfeed' %}">
+          MY FEED
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</div>

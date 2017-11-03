@@ -13,7 +13,7 @@ def home(request, postnav = 'newest'):
 
         # TODO: Rank by popularlity
         elif postnav == 'popular':
-            posts = Post.objects.all().order_by('-create_date')
+            posts = Post.objects.all().order_by('-score')
 
         elif postnav == 'myfeed':
             if request.user.is_authenticated:

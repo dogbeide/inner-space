@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'bootstrap3',
     'accounts',
-    'communities',
     'posts',
     'comments',
 ]

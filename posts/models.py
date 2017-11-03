@@ -4,7 +4,7 @@ from django.conf import settings
 
 import misaka
 
-from communities.models import Community
+# from communities.models import Community
 
 # POSTS models
 # Create your models here.
@@ -14,9 +14,12 @@ User = get_user_model()
 
 class Post(models.Model):
     user = models.ForeignKey(User,related_name='posts')
-    create_date = models.DateTimeField(auto_now=True)
+    create_date = models.DateTimeField(auto_now_add=True)
     message = models.TextField(max_length=1024)
     message_html = models.TextField(editable=False)
+    score = models.FloatField(default=0.0)
+    raters = models.ManyToManyField(User)
+    typestr = 'Post'
 
     def __str__(self):
         return self.message
@@ -27,7 +30,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('posts:single',kwargs={'pk':self.pk})
-    
+
     class Meta:
         ordering = ['-create_date']
         unique_together = ('user','message')

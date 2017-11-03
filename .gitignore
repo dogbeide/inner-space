@@ -1,0 +1,5 @@
+populate.py
+secrets.py
+*.py[co]
+db.sqlite3
+communities
