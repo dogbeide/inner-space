@@ -12,7 +12,7 @@ class User(auth.models.AbstractUser):
     rep = models.FloatField(default=5.00)
     power = models.FloatField(default=1.0)
     scale = models.FloatField(default=1.0)
-    rank = models.PositiveIntegerField(default=random.randrange(1000000000,2000000000))
+    rank = models.PositiveIntegerField(default=999999)
     typestr = 'User'
 
 
