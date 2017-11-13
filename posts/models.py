@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.conf import settings
 
 import misaka
@@ -13,7 +13,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Post(models.Model):
-    user = models.ForeignKey(User,related_name='posts')
+    user = models.ForeignKey(User,related_name='posts',on_delete=models.CASCADE)
     create_date = models.DateTimeField(auto_now_add=True)
     message = models.TextField(max_length=1024)
     message_html = models.TextField(editable=False)

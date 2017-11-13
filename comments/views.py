@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 # from django.contrib import messages
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 # from django.views import generic
 # from braces.views import SelectRelatedMixin
 from django.shortcuts import render, redirect, get_object_or_404
