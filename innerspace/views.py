@@ -7,6 +7,7 @@ def home(request, postnav = 'newest'):
 
     if request.method.upper() == 'GET':
         context = {}
+        posts = None
 
         if postnav == 'newest':
             posts = Post.objects.all().order_by('-create_date')
