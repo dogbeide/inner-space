@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 if [ ${PWD##*/} != 'tools' ] && [ ${PWD##*/} != 'inner-space' ]
 then
   # run script
@@ -12,17 +10,4 @@ then
   cd ..
 fi
 
-python -Wall manage.py test
-
-: '
-# TODO:
-
-start server
-close server
-
-innerspace urls & views
-accounts.tests.py
-posts.tests.py
-comments.tests.py
-
-'
+python -Wall manage.py test -v 2 2>&1 | tee tools/results.log

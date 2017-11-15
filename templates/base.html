@@ -51,7 +51,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{% url 'accounts:user_profile' username=user.slug %}">Dashboard</a>
                   <a class="dropdown-item" href="#">Settings</a>
-                  <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
+                  <a class="dropdown-item" href="{% url 'accounts:logout' %}" >Logout</a>
                 </div>
               </li>
             {% else %}
