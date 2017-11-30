@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Search Tweets{% endblock %}
+
+{% block javascript %}
+
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+  </script>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+  <form class="form-inline my-2 my-xs-0" action="{% url 'tweets:search' %}" method='post'>
+    {% csrf_token %}
+
+    {% if user.is_authenticated %}
+      <input type="search" class="form-control mr-sm-2" placeholder="Search Twitter" name="usr_query" value='{{ query }}' required>
+
+      <button type="submit" class="btn btn-outline-primary my-2 my-sm-0" name="submit_query">
+        <i class="fa fa-search fa-3" aria-hidden="true"></i>
+      </button>
+
+    {% else %}
+      <input type="search" class="form-control mr-sm-2" placeholder="Search Twitter" name="usr_query" value='{{ query }}' disabled>
+
+      <a href="{% url 'accounts:login' %}"
+         class="btn btn-outline-dark btn-sm">
+          Login
+      </a>
+    <div style="margin-left:5px">
+      to search
+    </div>
+
+    {% endif %}
+
+  </form>
+
+  {% if tweets %}
+
+    <div class="row">
+      {% if tweets.has_previous %}
+        <div style="margin-left: 10px">
+          <a style="font-size: 0.85em" class="infinite-more-link" href="?page={{ tweets.previous_page_number }}"> &lt;&lt; Prev({{ tweets.previous_page_number }})</a>
+        </div>
+      {% endif %}
+
+      {% if tweets.has_next %}
+        <div style="margin-left: 25px">
+          <a style="font-size: 0.85em" class="infinite-more-link" href="?page={{ tweets.next_page_number }}">Next({{ tweets.next_page_number }}) &gt;&gt; </a>
+        </div>
+      {% endif %}
+    </div>
+
+    <hr>
+
+    <div class="infinite-container">
+      {% for tweet in tweets %}
+        <div class="infinite-item">{% include "tweets/_tweet.html" %}</div>
+      {% endfor %}
+    </div>
+
+    <hr>
+
+    <div class="row">
+      {% if tweets.has_previous %}
+        <div style="margin-left: 10px">
+          <a style="font-size: 0.85em" class="infinite-more-link" href="?page={{ tweets.previous_page_number }}"> &lt;&lt; Prev({{ tweets.previous_page_number }})</a>
+        </div>
+      {% endif %}
+
+      {% if tweets.has_next %}
+        <div style="margin-left: 25px">
+          <a style="font-size: 0.85em" class="infinite-more-link" href="?page={{ tweets.next_page_number }}">Next({{ tweets.next_page_number }}) &gt;&gt; </a>
+        </div>
+      {% endif %}
+    </div>
+
+  {% endif %}
+
+</div>
+{% endblock %}

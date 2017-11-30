@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^comments/',include('comments.urls',namespace='comments')),
     url(r'^login-success/$',views.LoginSuccessPage.as_view(),name='login_success'),
     url(r'^thanks/$',views.ThanksPage.as_view(),name='thanks'),
+    url(r'^tweets/',include('tweets.urls',namespace='tweets')),
     url(r'^(?P<postnav>[-\w]+)/$',views.home,name='home'),
     url(r'^$',views.home,name='home'),
 ]
