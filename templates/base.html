@@ -22,9 +22,17 @@
     <link rel="stylesheet" href="{% static 'innerspace/css/btn.css' %}">
     <link rel="stylesheet" href="{% static 'innerspace/css/text.css' %}">
 
+    <script src="{% static 'innerspace/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'innerspace/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'innerspace/js/infinite.min.js' %}"></script>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
+    {% block javascript %}
+
+    {% endblock %}
+    
   </head>
   <body>
 
