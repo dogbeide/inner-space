@@ -1,0 +1,126 @@
+body {
+  font-size: 20px;
+  overflow: hidden;
+}
+
+:root {
+  --jumbo-text-1-color: #89a6c6;
+}
+
+.mynav {
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:3%;
+  padding-bottom: 5px;
+  box-shadow:0 2px 10px #ccc;
+  border-radius:10px;
+  background:white;
+  -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
+}
+.mynav:hover {
+  -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
+  box-shadow:0 3px 10px #5bc0de;
+}
+.mynav .navbar-toggle .icon-bar {
+    background-color: #5bc0de;
+}
+
+.mynav-item {
+  -webkit-transition:all .3s cubic-bezier(.93, .71, .58, 1);
+  border-bottom:1px solid transparent;
+}
+.mynav-item:hover {
+   border-bottom:1px solid #5bc0de;
+}
+
+.mynav-item a:hover {
+  text-decoration: none;
+}
+
+.mynav-item-brand {
+  font-size: 1.2em;
+  color: #5bc0de;
+}
+.mynav-item-user{
+  margin-left: 50px;
+  color: black;
+  border: 0;
+}
+
+
+
+
+.jumbotron-sky{
+  background-color: rgba(91,192,222,0.1);
+  margin-top: 25px;
+
+  box-shadow:0 4px 20px #ccc;
+  border-radius:10px;
+
+  -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
+}
+.jumbotron-sky:hover {
+  box-shadow:0 3px 30px #5bc0de;
+  -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
+}
+
+.shadebox {
+  padding: 1px;
+  box-shadow:0 4px 20px #ccc;
+  border-radius:10px;
+  -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
+}
+.shadebox:hover {
+  box-shadow:0 3px 30px #5bc0de;
+  -webkit-transition:all .2s cubic-bezier(.93, .71, .58, 1);
+}
+.shadebox a:hover{
+  text-decoration: none;
+}
+
+#community-info {
+  padding: 15px;
+  margin-bottom: 20px;
+  color: var(--jumbo-text-1-color)
+}
+
+/**/
+
+.community-item {
+  padding-bottom: 8px;
+  padding-left: 5px;
+  margin-bottom: 15px;
+}
+
+/**/
+
+.no-margin-vertical {
+  margin: 0px;
+
+  padding: 0;
+}
+
+.post-nav {
+  margin-bottom: 8px;
+}
+
+.post-nav-item {
+  display: block;
+  font-size: 1.2em;
+  color: var(--jumbo-text-1-color);
+  font-weight: bold;
+  margin-right: 10px;
+}
+.post-nav-item-active {
+  /*color: #5668a5;*/
+  color: #0056b3;
+  background-color: rgba(86,104,165,0.08);
+}
+.post-nav-divider {
+  display: block;
+  font-size: 0.9em;
+  color: #ccc;
+  font-weight: bold;
+  margin-right: 10px;
+}

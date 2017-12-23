@@ -4,3 +4,4 @@ secrets.py
 db.sqlite3
 communities
 results.log
+tweets100.json

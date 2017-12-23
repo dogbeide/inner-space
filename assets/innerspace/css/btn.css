@@ -1,0 +1,64 @@
+:root {
+  --btn-good-color: rgb(91,192,222);
+}
+
+.btn-sky * {
+  background-color: rgba(var(--btn-good-color),0.6);
+
+  display: inline;
+  align-items: center;
+  justify-content: center;
+
+  border: solid 1px;
+  border-radius:5px;
+  border-color: var(--btn-good-color);
+
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--btn-good-color);
+
+  box-shadow:-1px 1px 1px #ccc;
+  -webkit-transition:all .14s cubic-bezier(.93, .71, .58, 1);
+}
+.btn-sky *:hover{
+  -webkit-transition:all .14s cubic-bezier(.93, .71, .58, 1);
+  box-shadow: -1px 1px 2px var(--btn-good-color);
+  text-decoration: none;
+  color: #23527c;
+}
+
+
+#btn-joinus {
+  margin-top: 35px;
+  font-size: 3em;
+}
+#btn-password-reset {
+  display: block;
+  margin-top: 20px;
+}
+#btn-new-community {
+  margin-bottom: 20px;
+}
+
+.rate-plus {
+  font-size: 1.4em;
+  text-decoration: none;
+}
+.rate-minus {
+  font-size: 1.4em;
+  text-decoration: none;
+}
+
+/*#btn-leave {
+  float: left;
+  margin-bottom: 20px;
+}*/
+/*#btn-new-post{
+  float: left;
+  margin-bottom: 20px;
+}*/
