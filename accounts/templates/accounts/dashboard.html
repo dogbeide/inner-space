@@ -20,9 +20,14 @@
   </div>
   <div class="col-sm-8">
     {# TODO, fix and {% include "accounts/_nav.html" %}#}
-    {% for post in user_posts  %}
+
+    {% include "posts/_prev_next.html" %}
+
+    {% for post in posts  %}
       {% include "posts/_post.html" %}
     {% endfor %}
+
+
   </div>
 </div>
 

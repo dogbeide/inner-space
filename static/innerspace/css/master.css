@@ -1,6 +1,6 @@
 body {
   font-size: 20px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 :root {

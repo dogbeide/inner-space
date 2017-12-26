@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 
+{% block javascript %}
+
+
+{% endblock %}
+
 {% block content %}
   <div class="row">
 
     <div class="col-md-4">
 
-        <form class="form-inline my-2 my-xs-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style='width:auto'>
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-            <i class="fa fa-search fa-3" aria-hidden="true"></i>
-          </button>
-        </form>
-
+      <form class="form-inline my-2 my-xs-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style='width:auto'>
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+          <i class="fa fa-search fa-3" aria-hidden="true"></i>
+        </button>
+      </form>
 
       {% if user.is_authenticated %}
         <div class="btn-sky">
@@ -33,27 +37,18 @@
 
     <div class="col-md-8">
 
-    {% include "posts/_nav.html" %}
+      {% include "posts/_nav.html" %}
 
-    {% if newest %}
+      {% include "posts/_prev_next.html" %}
 
-      {% for post in newest %}
-        {% include "posts/_post.html" %}
+      {% for post in posts %}
+        <div class="infinite-item">
+          {% include "posts/_post.html" %}
+        </div>
       {% endfor %}
 
-    {% elif popular %}
+      {% include "posts/_prev_next.html" %}
 
-      {% for post in popular %}
-        {% include "posts/_post.html" %}
-      {% endfor %}
-
-    {% elif myfeed %}
-
-      {% for post in myfeed %}
-        {% include "posts/_post.html" %}
-      {% endfor %}
-
-    {% endif %}
 
     </div>
   </div>
