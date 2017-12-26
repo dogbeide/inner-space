@@ -1,0 +1,13 @@
+<div class="row" style="margin-bottom: 10px">
+  {% if posts.has_previous %}
+    <div style="margin-left: 10px">
+      <a style="font-size: 0.85em" class="infinite-more-link" href="?page={{posts.previous_page_number}}"> &lt;&lt; Prev({{ posts.previous_page_number }})</a>
+    </div>
+  {% endif %}
+
+  {% if posts.has_next %}
+    <div style="margin-left: 25px">
+      <a style="font-size: 0.85em" class="infinite-more-link" href="?page={{posts.next_page_number}}">Next({{ posts.next_page_number }}) &gt;&gt; </a>
+    </div>
+  {% endif %}
+</div>
